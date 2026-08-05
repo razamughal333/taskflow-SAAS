@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
 
 function Dashboard() {
@@ -6,7 +7,9 @@ function Dashboard() {
       <h1>Dashboard</h1>
       {projects.map((project) => (
         <div key={project.id}>
-          <h2>{project.name}</h2>
+          <Link to={`/project/${project.id}`}>
+            <h2>{project.name}</h2>
+          </Link>
           <p>{project.description}</p>
         </div>
       ))}
