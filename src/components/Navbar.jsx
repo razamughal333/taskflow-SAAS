@@ -15,7 +15,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-white-800 dark:bg-slate-800 border-b border-stone-200 dark:border-slate-700 px-4 py-3 sm:px-6 transition-colors duration-300">
+    <nav className="bg-white dark:bg-slate-800 border-b border-stone-200 dark:border-slate-700 px-4 py-3 sm:px-6 transition-colors duration-300">
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <Link
           to="/dashboard"
@@ -29,24 +29,16 @@ function Navbar() {
             {user?.username}
           </span>
 
-          <span
-            className={`text-xs font-semibold px-2 py-1 rounded-full ${
+          <Link
+            to="/upgrade"
+            className={`text-xs font-semibold px-2 py-1 rounded-full hover:opacity-80 transition-opacity ${
               plan === "pro"
                 ? "bg-teal-100 text-teal-700 dark:bg-teal-900 dark:text-teal-300"
                 : "bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300"
             }`}
           >
             {plan === "pro" ? "Pro plan" : "Free plan"}
-          </span>
-
-          {plan !== "pro" && (
-            <Link
-              to="/upgrade"
-              className="text-sm text-teal-700 dark:text-teal-400 font-medium hover:underline"
-            >
-              Upgrade
-            </Link>
-          )}
+          </Link>
 
           <button
             onClick={toggleTheme}
