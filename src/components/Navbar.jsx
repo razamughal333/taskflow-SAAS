@@ -15,14 +15,17 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-white dark:bg-slate-800 border-b border-stone-200 dark:border-slate-700 px-4 py-3 sm:px-6 transition-colors duration-300">
+    <nav className="bg-white-800 dark:bg-slate-800 border-b border-stone-200 dark:border-slate-700 px-4 py-3 sm:px-6 transition-colors duration-300">
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <Link to="/dashboard" className="text-lg font-bold text-teal-700 dark:text-teal-400">
+        <Link
+          to="/dashboard"
+          className="text-lg font-bold text-teal-700 dark:text-teal-400"
+        >
           ClientVault
         </Link>
 
         <div className="flex items-center gap-3 flex-wrap">
-          <span className="text-sm text-slate-600 dark:text-slate-300">
+          <span className="text-sm font-bold text-slate-600 dark:text-slate-300">
             {user?.username}
           </span>
 

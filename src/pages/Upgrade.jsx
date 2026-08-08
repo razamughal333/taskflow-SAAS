@@ -3,7 +3,7 @@ import usePlan from "../hooks/usePlan";
 import Navbar from "../components/Navbar";
 
 function Upgrade() {
-  const { plan, upgradeToPro } = usePlan();
+  const { plan, upgradeToPro, downgradeToFree } = usePlan();
   const navigate = useNavigate();
 
   const handleUpgrade = () => {
@@ -25,7 +25,10 @@ function Upgrade() {
           </p>
 
           <p className="text-3xl font-bold text-teal-700 dark:text-teal-400 mb-1">
-            $12<span className="text-base font-normal text-slate-400 dark:text-slate-500">/mo</span>
+            $12
+            <span className="text-base font-normal text-slate-400 dark:text-slate-500">
+              /mo
+            </span>
           </p>
 
           <ul className="text-sm text-slate-600 dark:text-slate-300 text-left mt-6 space-y-2">
@@ -35,9 +38,17 @@ function Upgrade() {
           </ul>
 
           {plan === "pro" ? (
-            <p className="mt-6 text-teal-700 dark:text-teal-400 font-medium">
-              You're already on the Pro plan 🎉
-            </p>
+            <div className="mt-6">
+              <p className="text-teal-700 dark:text-teal-400 font-medium mb-3">
+                You're already on the Pro plan 🎉
+              </p>
+              <button
+                onClick={downgradeToFree}
+                className="text-sm text-slate-400 dark:text-slate-500 hover:underline"
+              >
+                Downgrade to Free (for testing)
+              </button>
+            </div>
           ) : (
             <button
               onClick={handleUpgrade}

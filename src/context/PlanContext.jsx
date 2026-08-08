@@ -17,9 +17,19 @@ export function PlanProvider({ children }) {
   const upgradeToPro = () => {
     setPlan("pro");
   };
+  const downgradeToFree = () => {
+    setPlan("free");
+  };
 
   return (
-    <PlanContext.Provider value={{ plan, upgradeToPro, freeLimit: FREE_CLIENT_LIMIT }}>
+    <PlanContext.Provider
+      value={{
+        plan,
+        upgradeToPro,
+        downgradeToFree,
+        freeLimit: FREE_CLIENT_LIMIT,
+      }}
+    >
       {children}
     </PlanContext.Provider>
   );
