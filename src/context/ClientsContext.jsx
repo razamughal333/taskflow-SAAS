@@ -32,6 +32,39 @@ export function ClientsProvider({ children }) {
     );
   };
 
+  const updateClientInfo = (clientId, name, company) => {
+    setClients(
+      clients.map((client) =>
+        client.id === clientId ? { ...client, name, company } : client
+      )
+    );
+  };
+
+  const updateNote = (clientId, noteId, newText) => {
+    setClients(
+      clients.map((client) =>
+        client.id === clientId
+          ? {
+              ...client,
+              notes: client.notes.map((note) =>
+                note.id === noteId ? { ...note, text: newText } : note
+              ),
+            }
+          : client
+      )
+    );
+  };
+
+  const deleteNote = (clientId, noteId) => {
+    setClients(
+      clients.map((client) =>
+        client.id === clientId
+          ? { ...client, notes: client.notes.filter((note) => note.id !== noteId) }
+          : client
+      )
+    );
+  };
+
   const removeClient = (clientId) => {
     setClients(clients.filter((client) => client.id !== clientId));
   };
@@ -51,7 +84,16 @@ export function ClientsProvider({ children }) {
 
   return (
     <ClientsContext.Provider
-      value={{ clients, addClient, updateStatus, addNote, removeClient }}
+      value={{
+        clients,
+        addClient,
+        updateStatus,
+        updateClientInfo,
+        addNote,
+        updateNote,
+        deleteNote,
+        removeClient,
+      }}
     >
       {children}
     </ClientsContext.Provider>
